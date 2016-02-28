@@ -9,10 +9,10 @@ sudo apt-get install software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update
 sudo apt-get install ansible
-git clone https://github.com/Methodo-Stats-Tutor/installer.git
+git clone https://github.com/Methodo-Stats-Tutor/installer.git && cd installer
 ```
 
-- edit `groups_var` configuration files
+- edit `groups_var/mstr.conf` configuration files according to your config (ip, proxy...)
 
 ```
 sudo ansible-playbook -i "localhost," -c local site.yml
