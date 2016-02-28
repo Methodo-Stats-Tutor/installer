@@ -1,0 +1,5 @@
+PATH="/opt/texbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/nps/bash:/app/mst/bin"
+
+#http_proxy="http://10.172.139.21:3128/"
+#https_proxy="https://10.172.139.21:3128/"
+#ftp_proxy="ftp://10.172.139.21:3128/"

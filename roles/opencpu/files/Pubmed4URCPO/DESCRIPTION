@@ -1,0 +1,10 @@
+Package: Pubmed4URCPO
+Title: 
+Version: 0.1
+Authors@R: "Nicolas Paris <nicolas.paris@riseup.net> [aut, cre]"
+Description: Extract information from pubmed, based on RISmed package
+Depends: R (>= 3.1.2)
+License: ?
+LazyData: true
+Imports:
+    RISmed

@@ -1,0 +1,56 @@
+---
+
+#- name: "install java"
+  #apt: pkg="{{item}}" state=installed
+  #with_items:
+    #- openjdk-7-jdk
+
+#- name: add group "tomcat"
+#  group: name=tomcat
+
+#- name: add user "tomcat"
+#  user: name=tomcat groups="tomcat,mst" home=/opt/tomcat createhome=no
+#  sudo: True
+
+#- name: "Installing tomcat"
+#  unarchive: src=tomcat.zip dest=/opt group=tomcat copy=yes 
+#  args:
+#      creates: "/opt/tomcat"
+#- name: "Installing tomcat"
+#  synchronize:  
+#    src: roles/backend/files/tomcat 
+#    dest: /opt/
+
+#- name: "installing git"
+#  apt: pkg="{{item}}" state=installed
+#  with_items:
+#    - git
+
+- name: "Get files from github"
+  git: repo=git://github.com/Methodo-Stats-Tutor/backend.git dest=./git/backend clone=yes update=yes accept_hostkey=true force=yes
+
+- name: "Installing mst JEE application"
+  synchronize:  
+    src: git/backend/target/mst.war
+    dest: /usr/share/tomcat/webapps/
+  notify: restart tomcat
+
+- name: "groups"
+  file: path=/usr/share/tomcat/webapps/mst.war group=tomcat mode=770
+
+- name: waiting for tomcat to start
+  wait_for: port={{tomcat_port}}
+
+
+
+
+#- name: "deploy tomcat"
+#  apt: pkg="{{item}}" state=installed
+#  with_items:
+#    - apache2
+#    - php5
+
+#- name: "Unzipping website"
+#  unarchive: src=example.zip dest=/var/www/html/ group=www-data copy=yes 
+#  args:
+#      creates: /var/www/html/DM/

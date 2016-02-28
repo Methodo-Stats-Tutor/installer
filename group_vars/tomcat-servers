@@ -1,0 +1,14 @@
+# Here are variables related to the Tomcat installation
+
+tomcat_port: 8081
+tomcats_port: 8443
+http_proxy: ""
+http_proxy_host: ""
+http_proxy_port: ""
+http_host: "10.0.2.15"
+# This will configure a default manager-gui user:
+
+admin_username: admin
+admin_password: adminsecret
+
+mst_password: mstpassword

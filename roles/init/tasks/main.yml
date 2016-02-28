@@ -1,0 +1,11 @@
+---
+
+
+- name: "installing packages"
+  apt: pkg="{{item}}" state=installed
+  with_items:
+    - openjdk-7-jdk
+    - git
+    - apache2
+    - php5
+

@@ -1,0 +1,19 @@
+---
+# This playbook deploys méthodo stats tutor
+
+- hosts: all
+  remote_user: root
+  vars_files:
+          - "group_vars/tomcat-servers"
+  roles:
+     - init
+     - resources
+     - pdf2htmlex
+     - frontend
+     - tomcat
+     - backend
+     - opencpu
+
+
+  environment:
+    http_proxy: http_proxy
