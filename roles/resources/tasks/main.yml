@@ -18,6 +18,8 @@
     dest: /app/mstr/
     mode: push
 
+- file: path=/app/mstr/files/publi state=directory mode=770
+
 - name: "groups"
   file: path=/app/mstr group=mstr mode=770 state=directory recurse=yes
 
