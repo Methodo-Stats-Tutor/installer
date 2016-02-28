@@ -19,13 +19,6 @@
 
 - name: Symlink install directory
   file: src=/opt/apache-tomcat-7.0.61 path=/usr/share/tomcat state=link
-#- name: "Installing tomcat"
-#  synchronize:  
-#    src: roles/backend/files/tomcat 
-#    dest: /opt/
-
-- name: Symlink install directory
-  file: src=/opt/apache-tomcat-7.0.61 path=/usr/share/tomcat state=link
 
 - name: Change ownership of Tomcat installation
   file: path=/usr/share/tomcat/ owner=tomcat group=tomcat state=directory recurse=yes

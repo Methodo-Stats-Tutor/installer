@@ -4,7 +4,7 @@
 - hosts: all
   remote_user: root
   vars_files:
-          - "group_vars/tomcat-servers"
+          - "group_vars/mstr.conf"
   roles:
      - init
      - resources
@@ -13,6 +13,7 @@
      - tomcat
      - backend
      - opencpu
+     - protege
 
 
   environment:
