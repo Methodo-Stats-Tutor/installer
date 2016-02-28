@@ -3,14 +3,14 @@
 - name: "Get files from github"
   git: repo=git://github.com/Methodo-Stats-Tutor/backend.git dest=./git/backend clone=yes update=yes accept_hostkey=true force=yes
 
-- name: "Installing mst JEE application"
+- name: "Installing mstr JEE application"
   synchronize:  
-    src: git/backend/target/mst.war
+    src: git/backend/target/mstr.war
     dest: /usr/share/tomcat/webapps/
   notify: restart tomcat
 
 - name: "groups"
-  file: path=/usr/share/tomcat/webapps/mst.war group=tomcat mode=770
+  file: path=/usr/share/tomcat/webapps/mstr.war group=tomcat mode=770
 
 - name: waiting for tomcat to start
   wait_for: port={{tomcat_port}}

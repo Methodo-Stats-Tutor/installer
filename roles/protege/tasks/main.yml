@@ -7,7 +7,7 @@
   command: chdir=/usr/share /bin/tar xvf /opt/Protege-5.0.0-beta-23-linux.tar.gz -C /opt/ creates=/opt/protege-5.0.0-beta-23
 
 - name: "groups"
-  file: path=/opt/Protege-5.0.0-beta-23 group=mst mode=775 state=directory recurse=yes
+  file: path=/opt/Protege-5.0.0-beta-23 group=mstr mode=775 state=directory recurse=yes
 
 - name: "Configure Protégé"
   template: src=run.sh dest=/opt/Protege-5.0.0-beta-23/

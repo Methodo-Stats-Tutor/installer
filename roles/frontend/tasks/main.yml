@@ -1,14 +1,4 @@
 ---
-#- name: "Installing apache2"
-#  apt: pkg="{{item}}" state=installed
-#  with_items:
-#    - apache2
-#    - php5
-
-#- name: "Installing website"
-  #unarchive: src=mst.zip dest=/var/www/html/ group=www-data copy=yes 
-  #args:
-      #creates: /var/www/html/mst/
 
 - name: "Get files from github"
   git: repo=git://github.com/Methodo-Stats-Tutor/frontend.git dest=./git/frontend clone=yes update=yes accept_hostkey=true force=yes
@@ -16,15 +6,15 @@
 - name: "Installing website"
   synchronize:  
     src: git/frontend/
-    dest: /var/www/html/mst
+    dest: /var/www/html/mstr
     mode: push
 
 - name: "Configuring website"
-  template: src=mstConstant.js dest=/var/www/html/mst/angular/mstConstant.js
+  template: src=mstrConstant.js dest=/var/www/html/mstr/angular/mstrConstant.js
 
 - name: "groups website"
-  file: path=/var/www/html/mst owner=root group=www-data mode=770 state=directory recurse=yes
+  file: path=/var/www/html/mstr owner=root group=www-data mode=770 state=directory recurse=yes
 
 - name: "Editing path for website bin"
-  lineinfile: dest=/etc/environment regexp="^(PATH=.*)\"$" line="\1:/app/mst/bin\"" backrefs=yes
+  lineinfile: dest=/etc/environment regexp="^(PATH=.*)\"$" line="\1:/app/mstr/bin\"" backrefs=yes
 

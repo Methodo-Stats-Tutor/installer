@@ -2,16 +2,12 @@
 #- name: "Creating users mst without admin access"
 #  user: name=mst password="{{ mst_password |password_hash('sha512') }}"
 
-- name: "Creating group mst "
-  group: name=mst
+- name: "Creating group mstr "
+  group: name=mstr
 
 - name: "Preparing repository"
-  file: path=/app/ state=directory mode=0770 group=mst
+  file: path=/app/ state=directory mode=0770 group=mstr
 
-#- name: "Installing arborescence"
-#  unarchive: src=mst.zip dest=/app/ group=mst copy=yes 
-#  args:
-#      creates: "/app/mst"
 
 - name: "Get files from github"
   git: repo=git://github.com/Methodo-Stats-Tutor/resources.git dest=./git/resources clone=yes update=yes accept_hostkey=true force=yes
@@ -19,13 +15,13 @@
 - name: "Installing arbo"
   synchronize:  
     src: git/resources/
-    dest: /app/mst/
+    dest: /app/mstr/
     mode: push
 
 - name: "groups"
-  file: path=/app/mst group=mst mode=770 state=directory recurse=yes
+  file: path=/app/mstr group=mstr mode=770 state=directory recurse=yes
 
-- file: path=/app/mst/bin/img2html.sh  mode=u+x
-- file: path=/app/mst/bin/pdf2html.sh  mode=u+x
-- file: path=/app/mst/bin/pdf2htmlForStudent.sh  mode=u+x
-- file: path=/app/mst/bin/pdf2php.sh  mode=u+x
+- file: path=/app/mstr/bin/img2html.sh  mode=u+x
+- file: path=/app/mstr/bin/pdf2html.sh  mode=u+x
+- file: path=/app/mstr/bin/pdf2htmlForStudent.sh  mode=u+x
+- file: path=/app/mstr/bin/pdf2php.sh  mode=u+x
