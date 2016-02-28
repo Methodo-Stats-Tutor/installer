@@ -34,3 +34,7 @@ This will install :
 
 Try [http://localhost/mstr](Methodo-Stat TutoR)
 
+- run Protégé
+```
+/opt/Protege-5.0.0-beta-23/run.sh
+```
