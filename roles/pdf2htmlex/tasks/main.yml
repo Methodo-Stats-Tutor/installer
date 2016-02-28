@@ -4,7 +4,7 @@
   apt: name=build-essential update_cache=no
 
 - name: "Adding c++11 repos"
-  apt_repository: repo="ppa:ubuntu-toolchain-r/test"
+  apt_repository: repo="ppa:ubuntu-toolchain-r/test" validate_certs=yes
 
 - name: "Installing c++11"
   apt: pkg="{{item}}" state=installed
@@ -13,23 +13,17 @@
     - g++-4.9
     - cpp-4.9
 
-- name: "Installing pdf2htmlEX"
-  apt: deb="{{item}}" state=installed
-  with_items:
-    - roles/pdf2htmlex/files/libjpeg62-turbo_1.4.1-1_amd64.deb
-- name: "Installing pdf2htmlEX"
-  apt: deb="{{item}}" state=installed
-  with_items:
-    - roles/pdf2htmlex/files/libopenjpeg5_1.5.2-3.1_amd64.deb
-- name: "Installing pdf2htmlEX"
-  apt: deb="{{item}}" state=installed
-  with_items:
-    - roles/pdf2htmlex/files/libpoppler46_0.26.5-3_amd64.deb
-- name: "Installing pdf2htmlEX"
-  apt: deb="{{item}}" state=installed
-  with_items:
-    - roles/pdf2htmlex/files/pdf.js-common_1.1.366+dfsg-1_all.deb
-- name: "Installing pdf2htmlEX"
-  apt: deb="{{item}}" state=installed
-  with_items:
-    - roles/pdf2htmlex/files/pdf2htmlex_0.14.6+ds-1_amd64.deb
+- name: "Installing pdf2htmlEX 1"
+  apt: deb=roles/pdf2htmlex/files/libjpeg62-turbo_1.4.1-1_amd64.deb state=installed
+
+- name: "Installing pdf2htmlEX 2"
+  apt: deb=roles/pdf2htmlex/files/libopenjpeg5_1.5.2-3.1_amd64.deb state=installed
+
+- name: "Installing pdf2htmlEX 3"
+  apt: deb=roles/pdf2htmlex/files/libpoppler46_0.26.5-3_amd64.deb state=installed
+
+- name: "Installing pdf2htmlEX 4"
+  apt: deb=roles/pdf2htmlex/files/pdf.js-common_1.1.366+dfsg-1_all.deb state=installed
+
+- name: "Installing pdf2htmlEX 5"
+  apt: deb=roles/pdf2htmlex/files/pdf2htmlex_0.14.6+ds-1_amd64.deb state=installed
