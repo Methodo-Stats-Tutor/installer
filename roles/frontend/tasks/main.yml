@@ -18,3 +18,11 @@
 - name: "Editing path for website bin"
   lineinfile: dest=/etc/environment regexp="^(PATH=.*)\"$" line="\1:/app/mstr/bin\"" backrefs=yes
 
+
+- name: Symlink mstr_files
+  file: src=/app/mstr/files path=/var/www/html/mstr/mstr_files state=link
+
+
+- name: add user "www-data"
+  user: name=www-data groups="www-data,mstr"
+  notify: restart apache2
